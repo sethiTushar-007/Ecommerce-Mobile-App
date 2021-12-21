@@ -5,7 +5,7 @@ import Colors from '../../constants/Colors';
 import { addToCart } from '../../store/actions/cart';
 
 const ProductDetailScreen = props => {
-    const productId = props.navigation.getParam('productId');
+    const productId = props.route.params.productId;
     const selectedProduct = useSelector(state => state.products.availableProducts.find(prod => prod.id===productId));
 
     const dispatch = useDispatch();
@@ -27,10 +27,9 @@ const ProductDetailScreen = props => {
     )
 }
 
-ProductDetailScreen.navigationOptions = navData => {
-    const productTitle = navData.navigation.getParam('productTitle');
+export const screenOptions = navData => {
     return {
-        headerTitle: productTitle
+        headerTitle: navData.route.params.productTitle
     }
 }
 

@@ -77,7 +77,6 @@ const AuthScreen = props => {
         setIsLoading(true);
         try {
             await dispatch(action);
-            props.navigation.navigate('Shop');
         } catch (err) {
             setError(err.message);
             setIsLoading(false);
@@ -112,6 +111,7 @@ const AuthScreen = props => {
                             errorText="Please enter a valid email-address."
                             onInputChange={inputChangeHandler}
                             initialValue=""
+                            caretHidden={false}
                         />
                         <Input 
                             id='password'
@@ -153,7 +153,7 @@ const AuthScreen = props => {
     )
 }
 
-AuthScreen.navigationOptions = {
+export const screenOptions = {
     headerTitle: 'Authenticate'
 }
 
